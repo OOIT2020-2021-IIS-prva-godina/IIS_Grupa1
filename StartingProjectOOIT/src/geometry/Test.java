@@ -54,19 +54,19 @@ public class Test {
 		// 5. Postaviti x koordinatu krajnje tacke l1 na vrednost
 		// duzine linije l1 umanjene za vrednost zbira x i y
 		// koordinate pocetne tacke linije l1
-		l1.getEndPoint().setX((int)(l1.length()-(l1.getStartPoint().getX()+l1.getStartPoint().getY())));
+		l1.getEndPoint().setX((int) (l1.length() - (l1.getStartPoint().getX() + l1.getStartPoint().getY())));
 
 		// 6. Postaviti x koordinatu tacke gore levo pravougaonika
 		// r1 na vrednost 10 i y koordinatu na vrednost 15
-		r1.setUpperLeftPoint(p1);//inicijalizujemo vrednost tacke gore levo inace vraca Null pointer exception
+		r1.setUpperLeftPoint(p1);// inicijalizujemo vrednost tacke gore levo inace vraca Null pointer exception
 		r1.getUpperLeftPoint().setX(10);
 		r1.getUpperLeftPoint().setY(15);
 		System.out.println("X koordinata tacke gore levo: " + r1.getUpperLeftPoint().getX());
 		System.out.println("Y koordinata tacke gore levo: " + r1.getUpperLeftPoint().getY());
-		
+
 		// 7. Postaviti centar kruga c1 na koordinate tacke
 		// gore levo od r1
-		c1.setCenter(r1.getUpperLeftPoint()); //nema potrebe postavljati koordinate pojedinacno
+		c1.setCenter(r1.getUpperLeftPoint()); // nema potrebe postavljati koordinate pojedinacno
 		System.out.println("X koordinata centra: " + c1.getCenter().getX());
 		System.out.println("Y koordinata centra: " + c1.getCenter().getY());
 
@@ -74,8 +74,53 @@ public class Test {
 		// povrsine pravougaonika r1 i y koordinate pocetne tacke linije l1
 		r1.setHeight(20);
 		r1.setWidth(30);
-		c1.getCenter().setX(r1.area()-l1.getStartPoint().getY());
+		c1.getCenter().setX(r1.area() - l1.getStartPoint().getY());
 		System.out.println("X koordinata centra: " + c1.getCenter().getX());
+
+		// Vezbe 4.
+		Point p2 = new Point(50, 100);
+		// postavice false za selected
+		System.out.println(p2.isSelected());
+		Line l2 = new Line(p2, new Point(400, 500));
+		Rectangle r2 = new Rectangle(p2, 50, 80);
+		
+		System.out.println(p2);
+		System.out.println(l2);
+		System.out.println(r2);
+		
+		
+		int c = 5; 
+		int d = 5; 
+		System.out.println(c == d); 
+		 
+		d = 7; 
+		System.out.println(c == d); 
+
+		String e = "abcd"; 
+		String f = "abc"; // kreira se novi objekat 
+		System.out.println(e == f);
+		
+		
+		String b = "abc";//referencira se postojeci objekat
+		System.out.println(f == b); 
+		
+		String s1 = new String("Hello World");
+		String s2 = new String("Hello World"); // kreira se novi objekat 
+		System.out.println(s1==s2);
+		System.out.println(s1.equals(s2)); // poredjenje po vrednosti jer je redefinisana u klasi String
+
+		Point p5=new Point();
+		System.out.println(p5 == p2);
+		p5=p2; //dodeljuje se referenca i  vrednost
+		System.out.println(p5);
+		p2.setX(20);
+		System.out.println(p5);
+		System.out.println(p5 == p2);
+
+		System.out.println(p2);
+		Point p6=new Point(20,100);
+		System.out.println(p6 == p2);
+		System.out.println(p6.equals(p2)); //pre i posle redefinisanja metode
 
 	}
 }

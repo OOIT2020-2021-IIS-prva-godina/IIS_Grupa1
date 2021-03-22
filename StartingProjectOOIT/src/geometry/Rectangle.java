@@ -7,12 +7,39 @@ public class Rectangle {
 	private int height;
 	private boolean selected;
 
+	public Rectangle() {
+	}
+
+	public Rectangle(Point upperLeftPoint, int width, int height) {
+		this.upperLeftPoint = upperLeftPoint;
+		this.width = width;
+		this.height = height;
+	}
+
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected) {
+
+		this(upperLeftPoint, width, height);
+		this.selected = selected;
+	}
+
 	public int area() {
 		return this.width * this.height;
 	}
 
 	public int circumference() {
 		return this.width * 2 + this.height * 2;
+	}
+	
+	public boolean equals(Object obj) {
+		if (obj instanceof Rectangle) {
+			Rectangle pomocna = (Rectangle) obj;
+			if (this.upperLeftPoint.equals(pomocna.upperLeftPoint) && 
+					this.width==pomocna.width && this.height==pomocna.height)
+				return true;
+			else
+				return false;
+		} else
+			return false;
 	}
 
 	public Point getUpperLeftPoint() {
@@ -45,6 +72,10 @@ public class Rectangle {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+
+	public String toString() {
+		return "Upper left point:"+ upperLeftPoint+", width ="+ width +",height = "+height;
 	}
 
 }
