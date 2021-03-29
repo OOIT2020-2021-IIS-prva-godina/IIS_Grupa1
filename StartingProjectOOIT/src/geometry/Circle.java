@@ -4,8 +4,8 @@ public class Circle {
 
 	private Point center;
 	private int radius;
-	private boolean selected;
-	
+	protected boolean selected;
+
 	public Circle() {
 
 	}
@@ -27,12 +27,11 @@ public class Circle {
 	public double circumference() {
 		return 2 * radius * Math.PI;
 	}
-	
+
 	public boolean equals(Object obj) {
 		if (obj instanceof Circle) {
 			Circle pomocni = (Circle) obj;
-			if (this.center.equals(pomocni.center) &&
-					this.radius == pomocni.radius) {
+			if (this.center.equals(pomocni.center) && this.radius == pomocni.radius) {
 				return true;
 			} else {
 				return false;
@@ -40,6 +39,14 @@ public class Circle {
 		} else {
 			return false;
 		}
+	}
+
+	public boolean contains(int x, int y) {
+		return center.distance(x, y) <= radius;
+	}
+	
+	public boolean contains(Point p) {
+		return center.distance(p.getX(), p.getY()) <= radius;
 	}
 
 	public Point getCenter() {
@@ -65,7 +72,7 @@ public class Circle {
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
-	
+
 	public String toString() {
 		// Center=(x,y), radius= radius
 		return "Center=" + center + ", radius=" + radius;

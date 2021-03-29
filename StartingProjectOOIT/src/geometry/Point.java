@@ -39,6 +39,13 @@ public class Point {
 			return false;
 	}
 
+	public boolean contains(int x, int y) {
+		/*
+		 * if(this.distance(x, y) <=2) { return true; } return false;
+		 */
+		return this.distance(x, y) <= 2;
+	}
+
 	public void setX(int x) {
 		this.x = x;
 	}

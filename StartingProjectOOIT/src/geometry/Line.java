@@ -35,7 +35,10 @@ public class Line {
 		} else
 			return false;
 	}
-
+	
+	public boolean contains (int x, int y) {
+		return (this.startPoint.distance(x, y)+this.endPoint.distance(x, y)) - this.length()<=2;
+	}
 	public void setStartPoint(Point startPoint) {
 		this.startPoint = startPoint;
 	}
