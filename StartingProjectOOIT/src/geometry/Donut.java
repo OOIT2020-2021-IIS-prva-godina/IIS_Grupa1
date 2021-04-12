@@ -1,5 +1,7 @@
 package geometry;
 
+import java.awt.Graphics;
+
 public class Donut extends Circle {
 
 	private int innerRadius;
@@ -20,7 +22,10 @@ public class Donut extends Circle {
 	public Donut(Point center, int radius, int innerRadius, boolean selected) {
 		this(center, radius, innerRadius);
 		//this.setSelected(selected);//jer je selected u Circle private
-		this.selected = selected;//mogu ako je selected u Circle protected
+		
+		setSelected(selected);
+		//menja se nakon uvodjenja klase Shape
+		//this.selected = selected;//mogu ako je selected u Circle protected
 	}
 	
 	public double area() {
@@ -48,6 +53,12 @@ public class Donut extends Circle {
 	public boolean contains(Point p) {
 		double dFromCenter = getCenter().distance(p.getX(), p.getY());
 		return super.contains(p.getX(), p.getY()) && dFromCenter > innerRadius;
+	}	
+
+	@Override
+	public void draw(Graphics g) {
+		super.draw(g);//crtanje spoljasnjeg kruga
+		g.drawOval(center.getX()-innerRadius, center.getY()-innerRadius, innerRadius*2, innerRadius*2);
 	}
 
 	public String toString() {

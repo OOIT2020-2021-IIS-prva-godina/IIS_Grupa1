@@ -1,10 +1,11 @@
 package geometry;
 
-public class Line {
+import java.awt.Graphics;
+
+public class Line extends Shape {
 
 	private Point startPoint;
 	private Point endPoint;
-	private boolean selected;
 
 	public Line() {
 	}
@@ -16,7 +17,9 @@ public class Line {
 
 	public Line(Point startPoint, Point endPoint, boolean selected) {
 		this(startPoint, endPoint);
-		this.selected = selected;
+		setSelected(selected);
+		// menja se nakon uvodjenja klase Shape
+		// this.selected = selected;
 	}
 
 	public double length() {
@@ -24,7 +27,7 @@ public class Line {
 		// ispravno
 		return this.startPoint.distance(this.endPoint.getX(), this.endPoint.getY());
 	}
-	
+
 	public boolean equals(Object obj) {
 		if (obj instanceof Line) {
 			Line pomocna = (Line) obj;
@@ -35,10 +38,16 @@ public class Line {
 		} else
 			return false;
 	}
-	
-	public boolean contains (int x, int y) {
-		return (this.startPoint.distance(x, y)+this.endPoint.distance(x, y)) - this.length()<=2;
+
+	public boolean contains(int x, int y) {
+		return (this.startPoint.distance(x, y) + this.endPoint.distance(x, y)) - this.length() <= 2;
 	}
+
+	@Override
+	public void draw(Graphics g) {
+		g.drawLine(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY());
+	}
+
 	public void setStartPoint(Point startPoint) {
 		this.startPoint = startPoint;
 	}
@@ -53,14 +62,6 @@ public class Line {
 
 	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
-	}
-
-	public boolean isSelected() {
-		return this.selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 
 	public String toString() {
