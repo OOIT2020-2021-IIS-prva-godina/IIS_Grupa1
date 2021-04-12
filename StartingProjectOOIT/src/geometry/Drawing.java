@@ -20,6 +20,9 @@ public class Drawing extends JPanel{
 	//redefinisemo metodu iz klase JComponent
 	@Override
 	public void paint(Graphics g) {
+
+		//radi za ceo graficki kontekst a ne za oblik pojedinacno
+		g.setColor(Color.GREEN);
 		
 		Point p = new Point(50,50);
 		p.draw(g);
