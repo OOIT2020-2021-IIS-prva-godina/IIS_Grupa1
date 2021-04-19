@@ -1,5 +1,7 @@
 package geometry;
 
+import java.util.Arrays;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -83,44 +85,187 @@ public class Test {
 		System.out.println(p2.isSelected());
 		Line l2 = new Line(p2, new Point(400, 500));
 		Rectangle r2 = new Rectangle(p2, 50, 80);
-		
+
 		System.out.println(p2);
 		System.out.println(l2);
 		System.out.println(r2);
-		
-		
-		int c = 5; 
-		int d = 5; 
-		System.out.println(c == d); 
-		 
-		d = 7; 
-		System.out.println(c == d); 
 
-		String e = "abcd"; 
-		String f = "abc"; // kreira se novi objekat 
+		int c = 5;
+		int d = 5;
+		System.out.println(c == d);
+
+		d = 7;
+		System.out.println(c == d);
+
+		String e = "abcd";
+		String f = "abc"; // kreira se novi objekat
 		System.out.println(e == f);
-		
-		
-		String b = "abc";//referencira se postojeci objekat
-		System.out.println(f == b); 
-		
+
+		String b = "abc";// referencira se postojeci objekat
+		System.out.println(f == b);
+
 		String s1 = new String("Hello World");
-		String s2 = new String("Hello World"); // kreira se novi objekat 
-		System.out.println(s1==s2);
+		String s2 = new String("Hello World"); // kreira se novi objekat
+		System.out.println(s1 == s2);
 		System.out.println(s1.equals(s2)); // poredjenje po vrednosti jer je redefinisana u klasi String
 
-		Point p5=new Point();
+		Point p5 = new Point();
 		System.out.println(p5 == p2);
-		p5=p2; //dodeljuje se referenca i  vrednost
+		p5 = p2; // dodeljuje se referenca i vrednost
 		System.out.println(p5);
 		p2.setX(20);
 		System.out.println(p5);
 		System.out.println(p5 == p2);
 
 		System.out.println(p2);
-		Point p6=new Point(20,100);
+		Point p6 = new Point(20, 100);
 		System.out.println(p6 == p2);
-		System.out.println(p6.equals(p2)); //pre i posle redefinisanja metode
+		System.out.println(p6.equals(p2)); // pre i posle redefinisanja metode
+
+		// Vezbe 7
+		System.out.println("\nVezbe 7 - testiranje metoda i nizovi");
+		System.out.println("\nTacka");
+		System.out.println(p1);
+		p1.moveBy(5, 3);
+		System.out.println(p1);
+		p1.moveTo(5, 3);
+		System.out.println(p1);
+
+		System.out.println("\nLinija");
+		System.out.println(l1);
+		l1.moveBy(5, 3);
+		System.out.println(l1);
+		l1.moveTo(5, 3); // nista se ne menja
+		System.out.println(l1);
+
+		System.out.println("\nPravougaonik");
+		System.out.println(r1);
+		r1.moveBy(5, 3);
+		System.out.println(r1);
+		r1.moveTo(5, 3);
+		System.out.println(r1);
+
+		System.out.println("\nKrug");
+		System.out.println(c1);
+		c1.moveBy(5, 3);
+		System.out.println(c1);
+		c1.moveTo(5, 3);
+		System.out.println(c1);
+
+		Donut d1 = new Donut(new Point(800, 100), 50, 25);
+		System.out.println("\nKrug sa rupom");
+		System.out.println(d1);
+		d1.moveBy(5, 3);
+		System.out.println(d1);
+		d1.moveTo(5, 3);
+		System.out.println(d1);
+
+		Shape d3 = new Donut(p1, 10, 5);
+		Shape p9 = new Point();
+		Shape l9 = l1;
+		Shape c9 = c1;
+		System.out.println("\nIspis oblika");
+		Shape[] shapes = { d3, p9, l9, c9 };
+		for (int i = 0; i < shapes.length; i++) {
+			System.out.println(shapes[i]);
+		}
+		for (int i = 0; i < shapes.length; i++) {
+			shapes[i].moveBy(1, 2);
+			System.out.println(shapes[i]);
+		}
+		
+		int[] ints= {5,2,3,4,1};
+		System.out.println("\nIspis nesortiranog niza");
+		for (int i = 0; i < ints.length; i++) {
+			System.out.println(ints[i]);
+		}
+		Arrays.sort(ints);
+		System.out.println("\nIspis sortiranog niza");
+		for (int i = 0; i < ints.length; i++) {
+			System.out.println(ints[i]);
+		}
+		System.out.println("\n");
+		System.out.println(ints[1]);
+		
+		System.out.println("\nNiz tacaka");
+		Point p10=new Point(10,10);
+		Point p20=new Point(20,20);
+		Point p30=new Point(30,30);
+		Point p40=new Point(40,40);
+		Point p50=new Point(50,50);
+		Point[] points= {p30,p20,p40,p50,p10};
+		System.out.println("Ispis nesortiranog niza");
+		for (int i = 0; i < points.length; i++) {
+			System.out.println(points[i]);
+		}
+		Arrays.sort(points);
+		System.out.println("Ispis sortiranog niza");
+		for (int i = 0; i < points.length; i++) {
+			System.out.println(points[i]);
+		}
+		
+		System.out.println("\nNiz linija");
+		Line l10 = new Line(new Point(10, 10), new Point(100, 100));
+		Line l20 = new Line(new Point(10, 10), new Point(200, 200));
+		Line l30 = new Line(new Point(10, 10), new Point(300, 300));
+		Line[] lines = { l30, l10, l20 };
+		System.out.println("Nesortiran niz: ");
+		for (int i = 0; i < lines.length; i++) {
+			System.out.println(lines[i]);
+		}
+		Arrays.sort(lines);
+		System.out.println("Sortiran niz: ");
+		for (int i = 0; i < lines.length; i++) {
+			System.out.println(lines[i]);
+		}
+
+		System.out.println("\nNiz pravougaonika");
+		Point p3 = new Point(50, 50);
+		Rectangle r10 = new Rectangle(p1, 10, 10);
+		Rectangle r20 = new Rectangle(p2, 20, 20);
+		Rectangle r30 = new Rectangle(p3, 30, 30);
+		Rectangle[] rectangles = { r30, r10, r20 };
+		System.out.println("Nesortiran niz: ");
+		for (int i = 0; i < rectangles.length; i++) {
+			System.out.println(rectangles[i]);
+		}
+		Arrays.sort(rectangles);
+		System.out.println("Sortiran niz: ");
+		for (int i = 0; i < rectangles.length; i++) {
+			System.out.println(rectangles[i]);
+		}
+
+		
+		System.out.println("\nNiz krugova");
+		Circle c10=new Circle(p1, 10);
+		Circle c20=new Circle(p1, 20);
+		Circle c30=new Circle(p1, 30);
+		Circle c40=new Circle(p1, 40);
+		Circle[] circles= {c30,c20,c40,c10};
+		System.out.println("Ispis nesortiranog niza");
+		for (int i = 0; i < circles.length; i++) {
+			System.out.println(circles[i]);
+		}
+		Arrays.sort(circles);
+		System.out.println("Ispis sortiranog niza");
+		for (int i = 0; i < circles.length; i++) {
+			System.out.println(circles[i]);
+		}
+		
+		System.out.println("\nNiz krugova sa rupom");
+		Donut d10 = new Donut(p10, 100, 10);
+		Donut d20 = new Donut(p10, 100, 20);
+		Donut d30 = new Donut(p10, 100, 30);
+		Donut[] donuts = { d30, d10, d20 };
+		System.out.println("Nesortiran niz: ");
+		for (int i = 0; i < donuts.length; i++) {
+			System.out.println(donuts[i]);
+		}
+		Arrays.sort(donuts);
+		System.out.println("Sortiran niz: ");
+		for (int i = 0; i < donuts.length; i++) {
+			System.out.println(donuts[i]);
+		}
 
 	}
 }
