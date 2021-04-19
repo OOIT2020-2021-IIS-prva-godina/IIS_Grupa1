@@ -2,7 +2,7 @@ package geometry;
 
 import java.awt.Graphics;
 
-public class Circle extends Shape{
+public class Circle extends Shape {
 
 	protected Point center;
 	private int radius;
@@ -19,8 +19,8 @@ public class Circle extends Shape{
 	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
 		setSelected(selected);
-		//menja se nakon uvodjenja klase Shape
-		//this.selected = selected;
+		// menja se nakon uvodjenja klase Shape
+		// this.selected = selected;
 	}
 
 	public double area() {
@@ -47,17 +47,33 @@ public class Circle extends Shape{
 	public boolean contains(int x, int y) {
 		return center.distance(x, y) <= radius;
 	}
-	
+
 	public boolean contains(Point p) {
 		return center.distance(p.getX(), p.getY()) <= radius;
 	}
-	
-	
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawOval(center.getX()-radius, center.getY()-radius, radius+radius, radius+radius);
-		
+		g.drawOval(center.getX() - radius, center.getY() - radius, radius + radius, radius + radius);
+
+	}
+
+	@Override
+	public void moveTo(int x, int y) {
+		center.moveTo(x, y);
+	}
+
+	@Override
+	public void moveBy(int x, int y) {
+		center.moveBy(x, y);
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Circle) {
+			return (int)(this.area()-((Circle)o).area());
+		}
+		return 0;
 	}
 
 	public Point getCenter() {

@@ -3,7 +3,7 @@ package geometry;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Point extends Shape{
+public class Point extends Shape {
 
 	private int x;
 	private int y;
@@ -21,8 +21,8 @@ public class Point extends Shape{
 		// this.x = x;
 		// this.y = y;
 		setSelected(selected);
-		//menja se nakon uvodjenja klase Shape
-		//this.selected = selected;
+		// menja se nakon uvodjenja klase Shape
+		// this.selected = selected;
 	}
 
 	public double distance(int x2, int y2) {
@@ -53,8 +53,30 @@ public class Point extends Shape{
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		g.drawLine(x-2, y, x+2, y);
-		g.drawLine(x, y-2, x, y+2);
+		g.drawLine(x - 2, y, x + 2, y);
+		g.drawLine(x, y - 2, x, y + 2);
+	}
+
+	@Override
+	public void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	@Override
+	public void moveBy(int x, int y) {
+		this.x = this.x + x;
+		this.y += y;
+	}
+		
+
+	@Override
+	public int compareTo(Object o) {
+		
+		if(o instanceof Point) {
+			return (int)(this.distance(0,0)-((Point)o).distance(0, 0));
+		}
+		return 0;
 	}
 
 	public void setX(int x) {
