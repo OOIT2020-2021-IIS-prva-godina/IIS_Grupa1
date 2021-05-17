@@ -39,6 +39,7 @@ public class FrmTest extends JFrame {
 	private JLabel lblPlava;
 	private JLabel lblZuta;
 	private JTextField txtDodajBoju;
+	private JList listBoje;
 
 	/**
 	 * Launch the application.
@@ -90,43 +91,43 @@ public class FrmTest extends JFrame {
 				}
 			}
 		});
-		
-				JLabel lblDodatneBoje = new JLabel("Izaberi dodatne boje:");
-				GridBagConstraints gbc_lblDodatneBoje = new GridBagConstraints();
-				gbc_lblDodatneBoje.anchor = GridBagConstraints.EAST;
-				gbc_lblDodatneBoje.insets = new Insets(0, 0, 5, 5);
-				gbc_lblDodatneBoje.gridx = 5;
-				gbc_lblDodatneBoje.gridy = 0;
-				pnlCenter.add(lblDodatneBoje, gbc_lblDodatneBoje);
-		
-				JComboBox<String> cbxDodatneBoje = new JComboBox<String>();
-				cbxDodatneBoje.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						dlmBoje.addElement(cbxDodatneBoje.getSelectedItem().toString());
 
-						switch (cbxDodatneBoje.getSelectedItem().toString()) {
-						case "zelena":
-							lblDodatneBoje.setForeground(Color.green);
-							break;
-						case "narandzasta":
-							lblDodatneBoje.setForeground(Color.orange);
-							break;
-						case "ljubicasta":
-							lblDodatneBoje.setForeground(Color.magenta);
-							break;
-							
-						}
-					}
-				});
-				cbxDodatneBoje
-						.setModel(new DefaultComboBoxModel<String>(new String[] { "zelena", "narandzasta", "ljubicasta" }));
-				GridBagConstraints gbc_cbxDodatneBoje = new GridBagConstraints();
-				gbc_cbxDodatneBoje.insets = new Insets(0, 0, 5, 0);
-				gbc_cbxDodatneBoje.fill = GridBagConstraints.HORIZONTAL;
-				gbc_cbxDodatneBoje.gridx = 6;
-				gbc_cbxDodatneBoje.gridy = 0;
-				pnlCenter.add(cbxDodatneBoje, gbc_cbxDodatneBoje);
-		
+		JLabel lblDodatneBoje = new JLabel("Izaberi dodatne boje:");
+		GridBagConstraints gbc_lblDodatneBoje = new GridBagConstraints();
+		gbc_lblDodatneBoje.anchor = GridBagConstraints.EAST;
+		gbc_lblDodatneBoje.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDodatneBoje.gridx = 5;
+		gbc_lblDodatneBoje.gridy = 0;
+		pnlCenter.add(lblDodatneBoje, gbc_lblDodatneBoje);
+
+		JComboBox<String> cbxDodatneBoje = new JComboBox<String>();
+		cbxDodatneBoje.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dlmBoje.addElement(cbxDodatneBoje.getSelectedItem().toString());
+
+				switch (cbxDodatneBoje.getSelectedItem().toString()) {
+				case "zelena":
+					lblDodatneBoje.setForeground(Color.green);
+					break;
+				case "narandzasta":
+					lblDodatneBoje.setForeground(Color.orange);
+					break;
+				case "ljubicasta":
+					lblDodatneBoje.setForeground(Color.magenta);
+					break;
+
+				}
+			}
+		});
+		cbxDodatneBoje
+				.setModel(new DefaultComboBoxModel<String>(new String[] { "zelena", "narandzasta", "ljubicasta" }));
+		GridBagConstraints gbc_cbxDodatneBoje = new GridBagConstraints();
+		gbc_cbxDodatneBoje.insets = new Insets(0, 0, 5, 0);
+		gbc_cbxDodatneBoje.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cbxDodatneBoje.gridx = 6;
+		gbc_cbxDodatneBoje.gridy = 0;
+		pnlCenter.add(cbxDodatneBoje, gbc_cbxDodatneBoje);
+
 		JLabel lblUnesiBoju = new JLabel("Unesi boju:");
 		GridBagConstraints gbc_lblUnesiBoju = new GridBagConstraints();
 		gbc_lblUnesiBoju.insets = new Insets(0, 0, 5, 5);
@@ -134,13 +135,13 @@ public class FrmTest extends JFrame {
 		gbc_lblUnesiBoju.gridx = 5;
 		gbc_lblUnesiBoju.gridy = 1;
 		pnlCenter.add(lblUnesiBoju, gbc_lblUnesiBoju);
-		
+
 		txtDodajBoju = new JTextField();
 		txtDodajBoju.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
-				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					dlmBoje.addElement(txtDodajBoju.getText());
 					txtDodajBoju.setText("");
 				}
@@ -229,7 +230,7 @@ public class FrmTest extends JFrame {
 		gbc_scrollPane.gridy = 5;
 		pnlCenter.add(scrollPane, gbc_scrollPane);
 
-		JList listBoje = new JList();
+		listBoje = new JList();
 		scrollPane.setViewportView(listBoje);
 		listBoje.setModel(dlmBoje);
 
@@ -245,22 +246,55 @@ public class FrmTest extends JFrame {
 			}
 		});
 		pnlSouth.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton btnOtvoriDijalog = new JButton("Dodaj boju");
 		btnOtvoriDijalog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DlgTestBoja dlgTest = new DlgTestBoja();
 				dlgTest.setVisible(true);
-				
-				if(dlgTest.isOk) {
-					dlmBoje.addElement(dlgTest.txtCrvena.getText()+" "+dlgTest.txtZelena.getText()+" "+dlgTest.txtPlava.getText());
+
+				if (dlgTest.isOk) {
+					dlmBoje.addElement(dlgTest.txtCrvena.getText() + " " + dlgTest.txtZelena.getText() + " "
+							+ dlgTest.txtPlava.getText());
 					pnlCenter.setBackground(new Color(Integer.parseInt(dlgTest.txtCrvena.getText()),
-							Integer.parseInt(dlgTest.txtZelena.getText()),Integer.parseInt(dlgTest.txtPlava.getText())));
+							Integer.parseInt(dlgTest.txtZelena.getText()),
+							Integer.parseInt(dlgTest.txtPlava.getText())));
 				}
 			}
 		});
 		pnlSouth.add(btnOtvoriDijalog);
 		pnlSouth.add(btnIspis);
+
+		JButton btnIzmeniBoju = new JButton("Izmeni boju");
+		btnIzmeniBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				DlgTestBoja dlgBoje = new DlgTestBoja();
+
+				try {
+					String[] split = dlmBoje.getElementAt(listBoje.getSelectedIndex()).toString().split(" ");
+					dlgBoje.txtCrvena.setText(split[0]);
+					dlgBoje.txtZelena.setText(split[1]);
+					dlgBoje.txtPlava.setText(split[2]);
+					dlgBoje.setVisible(true);
+					
+					
+					if(dlgBoje.isOk) {
+						
+						dlmBoje.removeElementAt(listBoje.getSelectedIndex());
+						dlmBoje.addElement(dlgBoje.txtCrvena.getText() + " " + dlgBoje.txtZelena.getText() + " "
+								+ dlgBoje.txtPlava.getText());
+						pnlCenter.setBackground(new Color(Integer.parseInt(dlgBoje.txtCrvena.getText()),
+								Integer.parseInt(dlgBoje.txtZelena.getText()),
+								Integer.parseInt(dlgBoje.txtPlava.getText())));
+					}
+
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Morate selektovati sdekvatnu boju iz liste!");
+				}
+			}
+		});
+		pnlSouth.add(btnIzmeniBoju);
 
 		// severni panel
 		JPanel pnl_North = new JPanel();
